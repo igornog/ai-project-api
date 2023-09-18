@@ -6,7 +6,6 @@ import { openai } from '../lib/openai';
 
 export async function createTranscriptionRoute(app: FastifyInstance) {
   app.post('/videos/:videoId/transcription', async (request) => {
-    console.log(request.body);
     const paramsSchema = z.object({
       videoId: z.string().uuid(),
     });
