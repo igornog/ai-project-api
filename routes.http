@@ -17,9 +17,17 @@ Content-Type: audio/mpeg
 ###
 
 # @name create-transcription
-POST http://localhost:3333/videos/5eaa9c14-5217-485f-94f2-8301febb0579/transcription
+POST http://localhost:3333/videos/94731f8f-52d1-43b5-b40b-fa58ee3fff21/transcription
+Content-Type: application/json
+
+###
+
+# @name generate-ai-completion
+POST http://localhost:3333/ai/complete
 Content-Type: application/json
 
 {
-  "prompt": "bahamas, tequila"
+  "videoId": "94731f8f-52d1-43b5-b40b-fa58ee3fff21",
+  "temperature": 0.5,
+  "prompt": "Gere um resumo sucinto da transcrição do vídeo a seguir: ''' {transcription} '''"
 }

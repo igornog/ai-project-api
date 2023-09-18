@@ -30,13 +30,24 @@ export async function createTranscriptionRoute(app: FastifyInstance) {
 
     const response = await openai.audio.transcriptions.create({
       file: audioReadStream,
-      model:'whisper-1',
+      model: 'whisper-1',
       language: 'pt',
       response_format: 'json',
       temperature: 0,
       prompt,
     });
 
-    return response.text
+    const transcription = response.text;
+
+    await prisma.video.update({
+      where: {
+        id: videoId,
+      },
+      data: {
+        transcription: transcription,
+      },
+    });
+
+    return transcription;
   });
 }
