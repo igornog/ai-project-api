@@ -17,7 +17,7 @@ app.register(cors, {
 
 app
   .listen({
-    port: 3333,
+    port: 5432,
   })
   .then((address) => {
     console.log(`Server is listening on ${address}`);
