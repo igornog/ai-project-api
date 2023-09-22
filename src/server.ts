@@ -4,6 +4,7 @@ import { getAllPromptsRoute } from './routes/get-all-prompt';
 import { uploadVideoRoute } from './routes/upload-video';
 import { createTranscriptionRoute } from './routes/create-transcription';
 import { generateAICompletionRoute } from './routes/generate-ai-completion';
+
 const app = fastify();
 
 app.register(getAllPromptsRoute);
@@ -16,8 +17,7 @@ app.register(cors, {
 
 app
   .listen({
-    host: '0.0.0.0',
-    port: process.env.PORT ? Number(process.env.PORT) : 5432,
+    port: 3333,
   })
   .then((address) => {
     console.log(`Server is listening on ${address}`);
